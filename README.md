@@ -50,3 +50,7 @@ The server listens on **port 8000**.
 npm init -y
 npx tsc
 ```
+
+## Related to
+
+[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) - The repository for high quality TypeScript type definitions.
