@@ -30,7 +30,7 @@ export const getPets = (
 
   if (adopted){
     filteredPets = filteredPets.filter((pet:Pet):boolean=>
-      pet.adopted === JSON.parse(adopted)
+      pet.adopted === (adopted === 'true')
     )
   }
 
