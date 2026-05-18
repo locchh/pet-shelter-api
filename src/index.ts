@@ -1,5 +1,6 @@
 import express from 'express'
 import type {Express, Request, Response} from 'express'
+import type { Pet } from './data/pets'
 import { pets } from './data/pets'
 import cors from 'cors'
 
@@ -10,6 +11,16 @@ app.use(cors())
 
 app.get('/', (req: Request, res: Response)=> {
   res.json(pets)
+})
+
+app.get('/:id', (req: Request<{id:string}>, res: Response<Pet | {message: string}>):void => {
+  const id = Number(req.params.id)
+  const pet = pets.find(p => p.id === id)
+  if (!pet) {
+    res.status(404).json({ message: "Pet not found" })
+    return
+  }
+  res.json(pet)
 })
 
 app.use((req, res)=>{
