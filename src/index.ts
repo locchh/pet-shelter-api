@@ -12,6 +12,10 @@ app.get('/', (req: Request, res: Response)=> {
   res.json(pets)
 })
 
+app.use((req, res)=>{
+  res.status(404).json({message: "Endpoint not found"})
+})
+
 app.listen(PORT, ():void =>{
   console.log("Listening on port: ", PORT)
 })
