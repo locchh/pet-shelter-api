@@ -15,7 +15,7 @@ app.get('/', (req: Request, res: Response)=> {
 
 app.get('/:id', (req: Request<{id:string}>, res: Response<Pet | {message: string}>):void => {
   const id = Number(req.params.id)
-  const pet = pets.find(p => p.id === id)
+  const pet:Pet|undefined = pets.find((p:Pet):boolean => p.id === id)
   if (!pet) {
     res.status(404).json({ message: "Pet not found" })
     return
