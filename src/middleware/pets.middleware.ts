@@ -18,3 +18,18 @@ export const validateNumericId = (
     next()
   }
 }
+
+
+export const pleaseAuth = (
+  req:Request, 
+  res:Response<{message:string}>, 
+  next:NextFunction
+) => {
+  const {password} = req.query
+  if (String(password) === "please"){
+    next()
+  }
+  else{
+    res.status(401).json({message: "Unauthorised error"})
+  }
+}
